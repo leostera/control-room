@@ -1,0 +1,46 @@
+{
+  "name": "control-room",
+  "description": "",
+  "author": "",
+  "repository": "",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "license": "MIT",
+  "version": "",
+  "main": "src/app.js",
+  "dependencies": {
+    "babel-runtime": "^6.9.2",
+    "react": "^15.1.0",
+    "rxjs": "^5.0.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-flow-strip-types": "*",
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "envify": "^3.4.0",
+    "flow-bin": "^0.25.0",
+    "jest-cli": "^12.1.0",
+    "reactify": "^1.1.1",
+    "uglify-js": "^2.6.2"
+  },
+  "scripts": {},
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "optional": [
+            "runtime"
+          ]
+        }
+      ],
+      "reactify",
+      "envify"
+    ]
+  },
+  "jest": {
+    "rootDir": "./src"
+  }
+}
