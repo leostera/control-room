@@ -15,7 +15,6 @@ let socket = Observable.webSocket(URI)
 
 let save = (event) => {
   localStorage.setItem("controlroom.last_event", JSON.stringify(event))
-  localStorage.setItem("controlroom.events", JSON.stringify(events))
 }
 
 Observable.from(socket).do(save).subscribe()
