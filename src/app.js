@@ -9,7 +9,7 @@ const log = console.log.bind(console)
 let __uuid_counter=0
 let uuid = (key) => {
   __uuid_counter += 1
-  return __uuid_counter
+  return `${key}/${Date.now()}/${__uuid_counter}`
 }
 
 /*******************************************************************************
@@ -32,6 +32,12 @@ const NavBar = React.createClass({
   }
 })
 
+const Spinner = React.createClass({
+  render() {
+    return ( <span> {this.props.text}... </span> )
+  }
+})
+
 const Event = React.createClass({
   render() {
     let e = this.props.event
@@ -41,15 +47,15 @@ const Event = React.createClass({
 
 const Events = React.createClass({
   render() {
-    let events = this.props.events
-      .reverse()
-      .map( e => (<Event key={e._key} event={e} />) )
+    let events = false
 
-    return (
-      <ul>
-        { events }
-      </ul>
-    )
+    if( this.props.events.length > 0 ) {
+      events = this.props.events
+        .map( e => (<Event key={e._key} event={e} />) )
+        .reverse()
+    }
+
+    return ( <ul> { events || <Spinner text="Waiting for events" /> } </ul> )
   }
 })
 
@@ -95,7 +101,6 @@ Observable
   .map(addUUID)
   .bufferCount(5)
   .scan( (acc, events) => acc.concat(events) )
-  .do(log)
   .subscribe(render)
 
 render([])
