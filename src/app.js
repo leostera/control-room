@@ -40,8 +40,8 @@ const Spinner = React.createClass({
 
 const Event = React.createClass({
   render() {
-    let e = this.props.event
-    return ( <li> {e._key} - {e.event } </li>)
+    let e = JSON.stringify(this.props.event, null, '  ')
+    return ( <pre> {e} </pre> )
   }
 })
 
@@ -55,7 +55,12 @@ const Events = React.createClass({
         .reverse()
     }
 
-    return ( <ul> { events || <Spinner text="Waiting for events" /> } </ul> )
+    return (
+      <section id="events">
+        <h2> Events </h2>
+        { events || <Spinner text="Waiting for events" /> }
+      </section>
+    )
   }
 })
 

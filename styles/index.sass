@@ -1,19 +1,42 @@
 @import "colors"
 
 *
-  font-family: Helvetica Neue, Helvetica
-  font-size: 1em
+  font-family: Open Sans, Helvetica Neue, Helvetica
+  font-weight: 100
 
 body
   margin: 0
   background: $body_background
   color: $body_text
 
+h2
+  margin: 0
+  padding: 0
+
 nav
   height: 50px
   background: $nav_background
 
+@mixin box($width, $max-width)
+  width: $width
+  max-width: $width
+  border-radius: 4px
+  border: 1px solid $eerie_black
+  margin: 1em
+  padding: 2em
+
+#events
+  @include box(30%, 400px)
+
 .octocat
   float: right
   fill: $white
-  margin: 8px
+  margin: 0.5em
+
+pre
+  font-family: Roboto Mono, Courier New
+  margin: 1em 0em
+  display: block
+  padding: 0.5em
+  background-color: $black
+
