@@ -11,7 +11,7 @@ export default React.createClass({
     let width = this.props.width || "2em"
     let height = this.props.height || "2em"
     let viewbox = this.props.viewbox || "0 0 512 512"
-    let className = this.props.className || "github-corner"
+    let className = this.props.className || "octocat"
     return (
       <div>
         <a
